@@ -49,7 +49,7 @@ Active Record is magic. Well, not really. But it does build out a bunch of metho
 
 Active Record allows you to create a database that interacts with your class with only a few lines of code. These lines of code go to creating a model, which resides in the `app/models` folder, and a migration, which resides in the `db/migrate` folder.
 
-The model inherits from `ActiveRecord::Base` while the migration inherits from `ActiveRecord::Migration`. Many migrations these days have a `change` method, but you might also see migrations with an `up` and a `down` method instead. To use Active Record, you have to stick to some specific naming conventions: while the migrations are plural, the models are singular.
+The model inherits from `ActiveRecord::Base` while the migration inherits from `ActiveRecord::Migration[5.2]`. Many migrations these days have a `change` method, but you might also see migrations with an `up` and a `down` method instead. To use Active Record, you have to stick to some specific naming conventions: while the migrations are plural, the models are singular.
 
 #### Migrations
 
@@ -63,14 +63,14 @@ Migrations, as it was mentioned before, inherit from `ActiveRecord::Migration` a
 ```
 StandardError: Directly inheriting from ActiveRecord::Migration is not supported. Please specify the Rails release the migration was written for:
 
-  class CreateDogs < ActiveRecord::Migration[4.2]
+  class CreateDogs < ActiveRecord::Migration[5.2]
 ```
-...simply add `[4.2]` to the end of `ActiveRecord::Migration`, exactly as the error message instructs.
+...simply add `[5.2]` to the end of `ActiveRecord::Migration`, exactly as the error message instructs.
 
 Here's a simple example of the `create_table` method in action:
 
 ```ruby
-class CreateDogs < ActiveRecord::Migration[4.2]
+class CreateDogs < ActiveRecord::Migration[5.2]
   def change
     create_table :dogs do |t|
       t.string :name
@@ -127,7 +127,7 @@ For instance, let's say you wanted to make a class called `Candy`. Candies shoul
 `db/migrations/20130915204319_create_candies.rb`
 
 ```ruby
-class CreateCandies < ActiveRecord::Migration[4.2]
+class CreateCandies < ActiveRecord::Migration[5.2]
   def change
     create_table :candies do |t|
       t.string :name
@@ -238,12 +238,13 @@ You will only be altering code in six files, the three files in the `models` fol
 * Just like for any other lab, run `rspec` to view your progress.
 
 ## Resources
+
 * [Active Record Migrations](http://guides.rubyonrails.org/migrations.html)
   * Just look at the code for the example migrations
 * [Creating Active Record Models](http://guides.rubyonrails.org/active_record_basics.html#creating-active-record-models)
 * [Timestamps](http://api.rubyonrails.org/classes/ActiveRecord/Timestamp.html)
 
 ## Does this need an update?
+
 Please open a [GitHub issue](https://github.com/learn-co-curriculum/phrg-activerecord-costume-store-todo/issues) or [pull-request](https://github.com/learn-co-curriculum/phrg-activerecord-costume-store-todo/pulls). Provide a detailed description that explains the issue you have found or the change you are proposing. Then "@" mention your instructor on the issue or pull-request, and send them a link via Connect.
 
-<p data-visibility='hidden'>PHRG Active Record Costume Store</p>
